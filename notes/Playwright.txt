@@ -1,0 +1,25 @@
+Basic Playwright Test Structure
+The script uses Playwright, a powerful end-to-end testing framework. The test script automates browser interactions like filling out forms, clicking buttons, and checking results.
+
+Key Concepts:
+Test and Assertions: Playwright uses test() to define test cases, and expect() for making assertions (checking whether something is true or false).
+Browser Context: A fresh browser context is like a new, private window in your browser. It doesn't share cookies or cache with other contexts.
+Locators: Locators are used to interact with web elements on a page, such as buttons, input fields, etc.
+
+1. Playwright Setup
+const { test, expect } = require('@playwright/test');
+test: This is a function provided by Playwright to define and execute your test cases.
+expect: This is used to assert or validate conditions in your tests. It checks whether the actual output matches the expected output.
+
+2. Defining a Playwright Test Case
+Test Definition
+test('Browser Context Playwright test', async ({browser}) => {
+    // test logic here
+});
+test: This is used to define a test case. The first argument ('Browser Context Playwright test') is the test name, and the second argument is an async function that contains the test logic.
+async: The function is declared as asynchronous because Playwright's API methods (like goto(), locator(), click()) return promises and must be awaited.
+{browser}: Playwright provides a global fixture for the browser object, which is available in all test cases. You can use it to create a browser context and pages (tabs).
+
+Trace - Go to trace.playwright.dev and upload your trace zipfile - newer version doesnot require you to upload
+Caveat - traces can be heavy on memory so you need to set your trace to retain only on failure
+example trace : 'retain-on-failure'
