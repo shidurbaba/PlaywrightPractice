@@ -4,10 +4,12 @@ const { CraigListPage } = require('../pageobjects/CraigListPage')
 
 
 
-craiglistTest(`Craigslist Ad Table Lable and Text Automation`, async ({ page, communityElements, serviceElements }) => {
+craiglistTest.only(`Craigslist Ad Table Lable and Text Automation`, async ({ page, communityElements, serviceElements }) => {
     const { communityLabel, communityTables } = communityElements;
     const { serviceTables, serviceLabel } = serviceElements;
-    await page.goto("https://newyork.craigslist.org/")
+    const craiglist = new CraigListPage(page);
+    await craiglist.navigateTo();
+    //await page.goto("https://newyork.craigslist.org/")
 
     const communityText = await page.getByText(communityLabel).innerText();
 
@@ -97,7 +99,7 @@ craiglistTest(`Craiglist Ad Table Link Verification Automation - Services`, asyn
 }
 )
 
-craiglistTest.only(`Craiglist Page Dropdown Menu Verification`, async ({ page, craigListPageElements }) => {
+craiglistTest(`Craiglist Page Dropdown Menu Verification`, async ({ page, craigListPageElements }) => {
     await page.goto("https://newyork.craigslist.org/")
     const { languageDropDown, defaultDropDownValue, languageDropDownValues } = craigListPageElements
     const craigMethods = new CraigListPage(page);

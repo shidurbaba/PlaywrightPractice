@@ -1,4 +1,4 @@
-const {expect} = require("@playwright/test")
+const {expect, page} = require("@playwright/test")
 class CraigListPage 
 {
 constructor(page)
@@ -26,6 +26,11 @@ async selectLanguage(languageDropDownValues, languageDropDown,defaultDropDownVal
             const selectedLanguage = await this.page.locator(defaultDropDownValue).textContent();
             console.log(`Selected language after change: ${selectedLanguage}`)
         }
+}
+
+async navigateTo()
+{
+    await this.page.goto("https://newyork.craigslist.org/");
 }
 }
 
