@@ -23,7 +23,7 @@ const config = {
   {
       browserName: 'chromium',
       args: ['--start-maximized'],
-      headless : true,
+      headless : false,
       screenshot : 'on', //screenshot configuration - no need to code
     //  trace : 'on' // detailed trace of your automation step to debug your code
       trace : 'retain-on-failure',

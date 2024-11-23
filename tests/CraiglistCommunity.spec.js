@@ -1,13 +1,16 @@
 const { expect } = require('@playwright/test');
 const { craiglistTest } = require('../utils/craiglistPageElements')
 const { CraigListPage } = require('../pageobjects/CraigListPage')
+const { POManager } = require('../pageobjects/POManager');
 
 
 
-craiglistTest.only(`Craigslist Ad Table Lable and Text Automation`, async ({ page, communityElements, serviceElements }) => {
+
+craiglistTest(`Craigslist Ad Table Lable and Text Automation`, async ({ page, communityElements, serviceElements }) => {
     const { communityLabel, communityTables } = communityElements;
     const { serviceTables, serviceLabel } = serviceElements;
-    const craiglist = new CraigListPage(page);
+    const pom = new POManager(page);
+    const craiglist = pom.getCraiglistPage();
     await craiglist.navigateTo();
     //await page.goto("https://newyork.craigslist.org/")
 
@@ -46,8 +49,9 @@ craiglistTest.only(`Craigslist Ad Table Lable and Text Automation`, async ({ pag
 
 craiglistTest(`Craiglist Ad Table Link Verification Automation - Community`, async ({ page, communityElements }) => {
     const { communityTables_link, communityLabel } = communityElements;
-
-    await page.goto("https://newyork.craigslist.org/")
+    const pom = new POManager(page);
+    const craiglist = pom.getCraiglistPage();
+    await craiglist.navigateTo();
 
     const communityLinks = await page.locator(communityTables_link);
     const count = await page.locator(communityTables_link).count();
@@ -74,8 +78,9 @@ craiglistTest(`Craiglist Ad Table Link Verification Automation - Community`, asy
 
 craiglistTest(`Craiglist Ad Table Link Verification Automation - Services`, async ({ page, serviceElements }) => {
     const { serviceTables_link, serviceLabel } = serviceElements;
-
-    await page.goto("https://newyork.craigslist.org/")
+    const pom = new POManager(page);
+    const craiglist = pom.getCraiglistPage();
+    await craiglist.navigateTo();
     const serviceLinks = await page.locator(serviceTables_link);
     const count_service = await page.locator(serviceTables_link).count();
 
@@ -100,14 +105,16 @@ craiglistTest(`Craiglist Ad Table Link Verification Automation - Services`, asyn
 )
 
 craiglistTest(`Craiglist Page Dropdown Menu Verification`, async ({ page, craigListPageElements }) => {
-    await page.goto("https://newyork.craigslist.org/")
+    const pom = new POManager(page);
+    const craiglist = pom.getCraiglistPage();
+    await craiglist.navigateTo();
     const { languageDropDown, defaultDropDownValue, languageDropDownValues } = craigListPageElements
     const craigMethods = new CraigListPage(page);
 
     // Verify the default language
     await craigMethods.verifyDefaultLanguage(defaultDropDownValue);
-    await craigMethods.selectLanguage(languageDropDownValues, languageDropDown,defaultDropDownValue);
-  
+    await craigMethods.selectLanguage(languageDropDownValues, languageDropDown, defaultDropDownValue);
+
 }
 
 )
