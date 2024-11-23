@@ -13,7 +13,6 @@ craiglistTest(`Craigslist Ad Table Lable and Text Automation`, async ({ page, co
     const craiglist = pom.getCraiglistPage();
     await craiglist.navigateTo();
 
-    //Convert this into class method that accepts serviceTables
     await craiglist.verifyCommunitySection(communityLabel, communityTables);
     await craiglist.verifyServiceSection(serviceLabel, serviceTables);
 }
@@ -26,8 +25,6 @@ craiglistTest(`Craiglist Ad Table Link Verification Automation - Community`, asy
     const craiglist = pom.getCraiglistPage();
     await craiglist.navigateTo();
 
-
-    //Convert this into class method that accepts serviceTables
     await craiglist.verifyCommunityLinks(communityTables_link, communityLabel);
 }
 )
@@ -38,7 +35,6 @@ craiglistTest(`Craiglist Ad Table Link Verification Automation - Services`, asyn
     const craiglist = pom.getCraiglistPage();
     await craiglist.navigateTo();
 
-    //Convert this into class method that accepts serviceTables
     await craiglist.verifyServiceLinks(serviceTables_link, serviceLabel);
 
 }
@@ -51,7 +47,6 @@ craiglistTest(`Craiglist Page Dropdown Menu Verification`, async ({ page, craigL
     const { languageDropDown, defaultDropDownValue, languageDropDownValues } = craigListPageElements
     const craigMethods = new CraigListPage(page);
 
-    // Verify the default language
     await craigMethods.verifyDefaultLanguage(defaultDropDownValue);
     await craigMethods.selectLanguage(languageDropDownValues, languageDropDown, defaultDropDownValue);
 
