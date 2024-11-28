@@ -5,7 +5,8 @@ const { CheckoutPage } = require('../pageobjects/CheckoutPage');
 const { ThankyouPage } = require('../pageobjects/ThankyouPage');
 const { YourordersPage } = require('../pageobjects/YourordersPage');
 const { ViewPage } = require('../pageobjects/ViewPage');
-const {CraigListPage} = require('../pageobjects/CraigListPage');
+const { CraigListPage } = require('../pageobjects/CraigListPage');
+const {RedditPage} = require('../pageobjects/RedditPage');
 
 class POManager {
     constructor(page) {
@@ -18,11 +19,16 @@ class POManager {
         this.yourordersPage = new YourordersPage(this.page)
         this.viewpage = new ViewPage(this.page)
         this.craiglistpage = new CraigListPage(this.page);
+        this.redditpage = new RedditPage(this.page);
+
 
     }
-
-    getCraiglistPage()
+    getRedditPage()
     {
+        return this.redditpage
+    }
+
+    getCraiglistPage() {
         return this.craiglistpage
     }
 
