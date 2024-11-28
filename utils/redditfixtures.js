@@ -7,7 +7,9 @@ exports.redditTest = base.test.extend(
         redditHomeElements:
         {
             redditHomeLabel: "#home-posts",
-            redditPopularLabel: "#popular-posts"
+            redditPopularLabel: "#popular-posts",
+            LoginIn: "#login-button",
+            SearchButton:'#search-input div'
         }
     }
 )
