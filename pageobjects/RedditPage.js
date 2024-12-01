@@ -53,7 +53,7 @@ class RedditPage {
 
     async verifySearchAndNavigation(enterText) {
         try {
-            await this.page.waitForTimeout(1000);
+            await this.page.waitForTimeout(500);
             await this.verifySearchTextInput(enterText);
             await this.page.keyboard.press('Enter');
             await this.page.waitForTimeout(500);
@@ -75,6 +75,17 @@ class RedditPage {
             console.error(`Something seriously messed up: ${error.message}`);
             throw error
         }
+    }
+
+    async verifyLeftNavigationPanelDemo4()
+    {
+        const summaryLocator = this.page.locator('summary').filter({ hasText: 'TOPICS' });
+        await summaryLocator.click();
+        console.log(`Clicked on summary with text: ${'TOPICS'}`);
+    
+        const labeledSummaryLocator = this.page.locator('summary').filter({ hasText: 'RESOURCES' });
+        await labeledSummaryLocator.click();
+        console.log(`Clicked on summary with label: "${'RESOURCES'}"`);
     }
 
 

@@ -33,8 +33,13 @@ redditTest(`Reddit Test Demo 3`, async ({ page }) => {
     const reddit = pom.getRedditPage();
     await reddit.navigateToReddit();
 
-   await reddit.verifySearchAndNavigation("Elon Musk");
- 
-}
+    await reddit.verifySearchAndNavigation("Elon Musk");
 
-);
+});
+
+redditTest(`Reddit Test Demo 4`, async ({ page }) => {
+    const pom = new POManager(page);
+    const reddit = pom.getRedditPage();
+    await reddit.navigateToReddit();
+    await reddit.verifyLeftNavigationPanelDemo4();
+});
