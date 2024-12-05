@@ -28,6 +28,7 @@ const config = {
     //  trace : 'on' // detailed trace of your automation step to debug your code
       trace : 'retain-on-failure',
       video: 'retain-on-failure'
+      
 
   },
 
